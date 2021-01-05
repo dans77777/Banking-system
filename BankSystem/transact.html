@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactUS</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/all.min.css">
+    <link rel="stylesheet" href="./styles/fontawesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+    .cs{
+        height: 30rem;
+        background-image: url("./img/f2.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-attachment: fixed;
+        
+    }
+    
+</style>
+<body class="bg cs">
+    <section class="navbar1">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.php"><img src="./img/logo.jpg" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto pl-4">
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                   
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="aboutus.html">About Us</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="contactus.html">Contact US</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <a href="#" class="btn btn-outline-success my-2 my-sm-0">Search
+                    </a>
+                </form>
+
+        </nav>
+    </section>
+
+
+
+    <div class="t" >
+        <form class="transact" id="form" action="transact.php" form method="POST">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" name="senderName" placeholder="Sender's Name" id="sname">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Recipient's Name" name="recipientName" id="rname">
+                </div>
+               
+            </div>
+            <div class="form-row">
+            <div class="col">
+                    <input type="text" class="form-control" placeholder="Sender's Account Number" name="senderAccountNum" id="sacc">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Ricipients Account Number"  name="recipientAccountNum" id="racc">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Amount" id="amt" name="amount" required >
+                </div>
+
+            </div>
+            <div class="form-row pl-2 tx">
+                <div class="col pl-2">
+                    <textarea type="text" class="form-control pl-2 " placeholder="Message" name="msg" rows="3" id="msg"></textarea>
+                </div>
+            </div>
+            <div class="container mybtn">
+         <a href="success.php"><button class="btn btn-primary text-dark" type="submit"  value="Transaction" name="Transact"class= "form control">Transact</button></a>
+     
+</div>
+    
+        </form>
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+
+
+
+<script>
+
+    //form validation with javascript
+    function formValidation() {
+        //Get Value
+        var sname = document.getElementById('sname').value.trim();
+        var rname = document.getElementById('rname').value.trim();
+        var sacc = document.getElementById('sacc').value.trim();
+        var racc = document.getElementById('racc').value.trim();
+        var msg = document.getElementById('msg').value.trim();
+        var amt = document.getElementById('amt').value.trim();
+
+        var isValidForm = true;
+
+        //Validation Conditions here
+        if (sname.length < 1) {
+            alert(" your Name is Required!");
+            var isValidForm = false;
+        }
+        else if (rname.length < 1) {
+            alert("Recipients name is Required!");
+            var isValidForm = false;
+        }
+        else if (msg.length < 1) {
+            alert("Message is Required!");
+            var isValidForm = false;
+        }
+        else if (racc.length < 1) {
+            alert("Recipients Account number  is Required!");
+            var isValidForm = false;
+        }
+        else if (sacc.length < 1) {
+            alert("Sender's Account number is Required!");
+            var isValidForm = false;
+        }
+        else if (amt.value < 1) {
+            alert("Amount  is Required!");
+            var isValidForm = false;
+        }
+        else {
+            isValidForm = true;
+        }
+
+        return isValidForm;  //if isValidForm is true then form submits else submission is stopped
+
+    }
+
+
+
+    $(document).ready(function () {
+
+        $('#form').submit(function (e) {
+
+            //Get Value
+
+            var sname = $('#sname').val().trim();
+            var rname = $('#rname').val().trim();
+            var sacc = $('#sacc').val().trim();
+            var racc = $('#racc').val().trim();
+            var msg = $('#msg').val().trim();
+            var amt = $('#amt').val().trim();
+
+            //reset the errors
+            $(".error").remove();
+
+            var isValidForm = true;
+
+
+
+            if (sname.length < 1) {
+                $('#sname').after(alert('please enter your name'));
+                var isValidForm = false;
+            }
+
+            if (rname.length < 1) {
+                $('#rname').after(alert('please mention Recipients name'));
+                var isValidForm = false;
+            }
+            if (sacc.length < 1) {
+                $('#sacc').after(alert('please enter your Account Number'));
+                var isValidForm = false;
+            }
+
+            if (racc.length < 1) {
+                $('#racc').after(alert('please mention Recipients Account Number'));
+                var isValidForm = false;
+            }
+
+            if (msg.length < 1) {
+                $('#msg').after(alert('please mention Important note for Reciever'));
+                var isValidForm = false;
+            }
+            if (amt.value < 1) {
+                $('#amt').after(alert('please Enter amount to debit'));
+                var isValidForm = false;
+            }
+            if (isNaN(amt) || amt < 1 ) {
+                alert("Input not valid");
+            }
+
+
+
+
+            return isValidForm;  //if isValidForm is true then form submits else submission is stopped
+
+        });
+
+    });
+
+</script>
